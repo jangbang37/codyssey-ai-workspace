@@ -310,6 +310,9 @@ https://github.com/jangbang37/codyssey-ai-workspace
 
 ### 10) Linux 실행 환경
 ![Linux 실행 환경](evidence/10_docker_swarm_runtime_linux.png)
+### 11) VS Code 및 GitHub 연동
+
+![VS Code GitHub 로그인](evidence/11_vscode_github_login.png)
 ## 15. 핵심 개념 정리
 
 ### 15-1. 절대 경로와 상대 경로
@@ -495,12 +498,14 @@ docker stats --no-stream attach-demo
 
 컨테이너의 로그와 CPU, 메모리 등 리소스 사용량을 확인했다.
 
-### 19-3. Windows Docker Desktop 환경
+### 19-3. 실습 환경별 Docker 버전
 
-- 운영체제: Windows 11
-- Docker 실행 환경: Docker Desktop
-- Linux 커널: WSL2
-- Docker 버전: 29.9.2
+| 실습 환경 | Docker 버전 |
+|---|---|
+| Killercoda Ubuntu 24.04 | 29.1.3 |
+| Windows 11 Docker Desktop | 29.9.2 |
+
+각 버전은 서로 다른 실습 환경에서 확인한 값이다.
 
 기본 이미지 실행과 사용자 지정 Nginx 이미지 빌드를 Windows 환경에서 진행했다.
 ## Docker 웹 서버 프로젝트 파일
@@ -515,3 +520,73 @@ docker stats --no-stream attach-demo
 ```bash
 cd docker-web
 docker build -t codyssey-web:v1 .
+## 9. 추가 학습 및 검증 내용
+
+### 9-1. 컨테이너 실행 방식 비교
+
+Docker 컨테이너 내부에 접속하는 방법에는 `attach`와 `exec`가 있다.
+
+| 구분 | attach | exec |
+|---|---|---|
+| 접속 방식 | 실행 중인 컨테이너의 주 프로세스에 연결 | 실행 중인 컨테이너에서 새 명령 실행 |
+| 주요 용도 | 기존 프로세스와 연결 | 별도의 명령 실행 및 점검 |
+| 특징 | 연결 종료 시 주 프로세스에 영향을 줄 수 있음 | 명령 실행 후 기존 컨테이너를 계속 유지할 수 있음 |
+
+```bash
+docker attach <container_name>
+docker exec -it <container_name> bash
+```
+
+### 9-2. Docker 운영 상태 확인
+
+Docker 이미지와 컨테이너의 상태를 확인하고 로그 및 리소스 사용량을 점검한다.
+
+```bash
+docker images
+docker ps -a
+docker logs <container_name>
+docker stats --no-stream <container_name>
+```
+
+- `docker images`: 생성된 이미지 목록 확인
+- `docker ps -a`: 실행 및 종료된 컨테이너 확인
+- `docker logs`: 컨테이너 실행 로그 확인
+- `docker stats`: 컨테이너 리소스 사용량 확인
+
+### 9-3. Bind Mount와 Volume의 차이
+
+| 구분 | Bind Mount | Docker Volume |
+|---|---|---|
+| 저장 위치 | 호스트의 지정한 경로 | Docker가 관리하는 저장 공간 |
+| 주요 목적 | 호스트 파일 변경 사항을 컨테이너에 반영 | 컨테이너 삭제 후에도 데이터 유지 |
+| 활용 사례 | 웹 페이지 소스 수정 및 반영 | 데이터 영속성 확보 |
+
+### 9-4. Git과 GitHub의 역할
+
+- Git: 로컬 컴퓨터에서 파일 변경 이력을 관리하는 버전 관리 도구
+- GitHub: Git 저장소를 원격에 보관하고 다른 사람과 공유·협업하는 플랫폼
+- VS Code: Git 기능을 사용하여 변경 사항 확인, 커밋, 원격 저장소 연동 등을 수행할 수 있는 개발 도구
+
+### 9-5. Docker 웹 서버 프로젝트 파일
+
+웹
+### Git 사용자 정보 및 기본 브랜치 설정
+
+Git 전역 설정을 통해 사용자 정보와 기본 브랜치를 지정했다.
+
+```bash
+git config --global --list
+```
+
+확인 결과:
+
+```text
+user.name=Jiyoung
+user.email=jang***@naver.com
+init.defaultbranch=main
+```
+
+- 사용자 이름 설정 확인
+- 사용자 이메일 설정 확인
+- 기본 브랜치가 `main`으로 설정된 것을 확인
+
