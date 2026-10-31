@@ -459,7 +459,7 @@ git init
 chmod 744 practice.txt
 stat -c "%a %n" practice.txt
 ```
-### 사례 3. Dockerfile을 찾지 못하는 문제
+### 사례 4. Dockerfile을 찾지 못하는 문제
 
 - **문제:** Docker 이미지 빌드 시 `failed to read dockerfile: open Dockerfile: no such file or directory` 오류가 발생했다.
 - **원인 확인:** 파일이 `Dockerfile.txt`라는 이름으로 저장되어 있었다.
