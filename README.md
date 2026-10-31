@@ -353,3 +353,46 @@ https://github.com/jangbang37/codyssey-ai-workspace
 - GitHub: Git 저장소를 온라인에 보관하고 다른 사람과 공유할 수 있는 서비스이다.
 
 이번 실습에서는 Git으로 변경 사항을 커밋하고, GitHub 저장소에 푸시하여 파일과 README를 업로드했다.
+## 16. 포트 충돌 확인 및 해결 방법
+
+### 16-1. 포트 충돌이란?
+
+호스트에서 이미 사용 중인 포트를 다른 컨테이너가 다시 사용하려고 하면 포트 할당 오류가 발생할 수 있다.
+
+### 16-2. 사용 중인 포트 확인
+
+Linux 환경에서는 다음 명령어로 포트 사용 상태를 확인할 수 있다.
+
+```bash
+ss -lntp
+특정 포트를 확인하려면 다음과 같이 입력한다.
+ss -lntp | grep ':8080'
+16-3. 해결 방법
+1. 해당 포트를 사용 중인 프로세스나 컨테이너를 확인한다.
+2. 기존 컨테이너를 계속 사용해야 하는지 판단한다.
+3. 다른 포트를 사용해 컨테이너를 실행할 수 있다.
+예를 들어 호스트 포트 8080이 사용 중이라면 8082로 변경할 수 있다.
+docker run -d --name codyssey-web-3 -p 8082:80 codyssey-web:v1
+이 명령은 호스트의 8082번 포트를 컨테이너의 80번 포트에 연결한다.
+
+※ 위 명령은 포트 변경 방법을 설명하는 예시이며, 이번 실습에서 별도의 포트 충돌을 발생시켜 검증한 것은 아니다.
+17. Docker 데이터 백업 및 복구
+17-1. 백업
+이번 실습에서는 Docker Volume의 데이터를 압축 파일로 백업했다.
+docker run --rm \
+  -v codyssey-data:/data \
+  -v /root:/backup \
+  ubuntu tar -czf /backup/codyssey-data-backup.tar.gz -C /data .
+  백업 파일 확인:
+  ls -lh /root/codyssey-data-backup.tar.gz
+tar -tzf /root/codyssey-data-backup.tar.gz
+백업 파일이 생성되고 내부에 saved.txt가 포함된 것을 확인했다.
+17-2. 복구 방법
+백업 파일을 기존 Volume에 복원하려면 다음과 같은 방식으로 진행할 수 있다.
+docker run --rm \
+  -v codyssey-data:/data \
+  -v /root:/backup \
+  ubuntu tar -xzf /backup/codyssey-data-backup.tar.gz -C /data
+  이 명령은 압축 파일의 내용을 Volume에 풀어 복원하는 예시이다.
+
+※ 백업 파일 생성과 내부 파일 확인은 완료했지만, 위 복구 명령은 아직 실제로 실행하지 않았다.
