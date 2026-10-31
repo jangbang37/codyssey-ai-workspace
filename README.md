@@ -393,7 +393,7 @@ docker run -d --name codyssey-web-3 -p 8082:80 codyssey-web:v1
 
 ### 17-1. 백업
 
-이번 실습에서는 Docker Volume의 데이터를 압축 파일로 백업했다.
+이번 실습에서는 Docker Volume에 저장된 데이터를 압축 파일로 백업했다.
 
 ```bash
 docker run --rm \
@@ -402,18 +402,18 @@ docker run --rm \
   ubuntu tar -czf /backup/codyssey-data-backup.tar.gz -C /data .
 ```
 
-백업 파일 확인:
+**백업 파일 확인**
 
 ```bash
 ls -lh /root/codyssey-data-backup.tar.gz
 tar -tzf /root/codyssey-data-backup.tar.gz
 ```
 
-백업 파일이 생성되고 내부에 `saved.txt`가 포함된 것을 확인했다.
+백업 파일이 정상적으로 생성되었으며, 압축 파일 내부에 `saved.txt`가 포함된 것을 확인했다.
 
 ### 17-2. 복구 방법
 
-백업 파일을 기존 Volume에 복원할 때 사용할 수 있는 명령어 예시이다.
+백업 파일을 기존 Volume에 복원할 때 사용할 수 있는 명령어다.
 
 ```bash
 docker run --rm \
@@ -422,7 +422,7 @@ docker run --rm \
   ubuntu tar -xzf /backup/codyssey-data-backup.tar.gz -C /data
 ```
 
-※ 백업 파일 생성과 내부 파일 확인은 완료했지만, 위 복구 명령은 아직 실제로 실행하지 않았다.
+※ 백업 파일 생성 및 내부 파일 확인은 완료했으나, 복구 명령어는 실제 실행하지 않았다.
 ## 18. 문제 해결 (Troubleshooting)
 
 ### 사례 1. Git 명령어를 인식하지 못하는 문제
