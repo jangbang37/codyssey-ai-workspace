@@ -423,3 +423,39 @@ docker run --rm \
 ```
 
 ※ 백업 파일 생성과 내부 파일 확인은 완료했지만, 위 복구 명령은 아직 실제로 실행하지 않았다.
+## 18. 문제 해결 (Troubleshooting)
+
+### 사례 1. Git 명령어를 인식하지 못하는 문제
+
+- **문제:** Windows CMD에서 `git` 명령어를 실행했을 때 명령어를 찾을 수 없다는 메시지가 나타났다.
+- **원인 확인:** Git 실행 파일 경로가 Windows PATH 환경 변수에 등록되지 않은 상태였다.
+- **해결:** Git 실행 파일 경로인 `C:\Program Files\Git\cmd`를 사용자 PATH에 추가했다.
+- **검증:** 새 CMD 창에서 다음 명령어를 실행해 버전을 확인했다.
+
+```cmd
+git --version
+```
+
+### 사례 2. Git 저장소가 아닌 폴더에서 명령어를 실행한 문제
+
+- **문제:** `git status` 실행 시 Git 저장소가 아니라는 오류가 발생했다.
+- **원인 확인:** 현재 작업 폴더에 Git 저장소 정보가 없었다.
+- **해결:** 프로젝트 폴더에서 다음 명령어를 실행해 저장소를 초기화했다.
+
+```bash
+git init
+```
+
+- **검증:** 다시 `git status`를 실행해 현재 브랜치가 `main`으로 표시되는 것을 확인했다.
+
+### 사례 3. Windows Git Bash에서 chmod 변경이 반영되지 않은 문제
+
+- **문제:** Git Bash에서 `chmod 744 practice.txt`를 실행했지만 권한 표시가 `644`로 유지되었다.
+- **원인 확인:** Windows NTFS 환경과 Linux의 권한 처리 방식이 다르기 때문이다.
+- **해결:** 실제 Linux 환경인 Killercoda에서 권한 변경을 다시 실습했다.
+- **검증:** Killercoda에서 다음 명령어를 실행해 `744 practice.txt`가 표시되는 것을 확인했다.
+
+```bash
+chmod 744 practice.txt
+stat -c "%a %n" practice.txt
+```
