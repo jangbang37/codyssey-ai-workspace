@@ -467,7 +467,8 @@ stat -c "%a %n" practice.txt
 
 ```cmd
 ren Dockerfile.txt Dockerfile
-```markdown
+```
+
 ## 19. Docker 컨테이너 연결 및 모니터링 추가 실습
 
 ### 19-1. exec와 attach 비교
@@ -492,11 +493,11 @@ docker logs -f attach-demo
 docker stats --no-stream attach-demo
 ```
 
-컨테이너 로그와 CPU, 메모리 등 리소스 사용량을 확인했다.
+컨테이너의 로그와 CPU, 메모리 등 리소스 사용량을 확인했다.
 
 ### 19-3. Windows Docker Desktop 환경
 
-- OS: Windows 11
+- 운영체제: Windows 11
 - Docker 실행 환경: Docker Desktop
 - Linux 커널: WSL2
 - Docker 버전: 29.9.2
