@@ -611,7 +611,7 @@ Linux 권한은 숫자로도 표현할 수 있다.
 실제 권한 확인 결과:
 
 ```text
--rwxr--r-- 1 root root 날짜 시간 practice.txt
+-rwxr--r-- 1 root root 0 Oct 31 00:32 practice.txt
 ```
 
 `ls -l` 명령어를 통해 파일의 권한과 소유자, 그룹 정보를 확인할 수 있다.
