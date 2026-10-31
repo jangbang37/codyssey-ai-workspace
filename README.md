@@ -503,3 +503,15 @@ docker stats --no-stream attach-demo
 - Docker 버전: 29.9.2
 
 기본 이미지 실행과 사용자 지정 Nginx 이미지 빌드를 Windows 환경에서 진행했다.
+## Docker 웹 서버 프로젝트 파일
+
+웹 서버 실습에 사용한 소스 파일을 `docker-web` 폴더에 보관한다.
+
+- `docker-web/Dockerfile`: Nginx 기반 Docker 이미지 빌드 설정 파일
+- `docker-web/index.html`: 웹 서버에서 제공하는 HTML 페이지
+
+### 이미지 빌드 명령어
+
+```bash
+cd docker-web
+docker build -t codyssey-web:v1 .
