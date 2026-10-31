@@ -459,3 +459,46 @@ git init
 chmod 744 practice.txt
 stat -c "%a %n" practice.txt
 ```
+### 사례 3. Dockerfile을 찾지 못하는 문제
+
+- **문제:** Docker 이미지 빌드 시 `failed to read dockerfile: open Dockerfile: no such file or directory` 오류가 발생했다.
+- **원인 확인:** 파일이 `Dockerfile.txt`라는 이름으로 저장되어 있었다.
+- **해결:** 파일 이름을 `Dockerfile`로 변경했다.
+
+```cmd
+ren Dockerfile.txt Dockerfile
+```markdown
+## 19. Docker 컨테이너 연결 및 모니터링 추가 실습
+
+### 19-1. exec와 attach 비교
+
+- `docker exec`: 실행 중인 컨테이너 내부에서 새로운 명령이나 터미널을 실행한다.
+- `docker attach`: 컨테이너의 주 프로세스에 연결한다.
+
+실습 명령어:
+
+```cmd
+docker exec -it attach-demo bash
+docker attach attach-demo
+```
+
+`Ctrl + P`, `Ctrl + Q`를 이용해 attach 연결을 종료하고 컨테이너 실행 상태를 유지하는 방법도 확인했다.
+
+### 19-2. 로그 및 리소스 확인
+
+```cmd
+docker logs attach-demo
+docker logs -f attach-demo
+docker stats --no-stream attach-demo
+```
+
+컨테이너 로그와 CPU, 메모리 등 리소스 사용량을 확인했다.
+
+### 19-3. Windows Docker Desktop 환경
+
+- OS: Windows 11
+- Docker 실행 환경: Docker Desktop
+- Linux 커널: WSL2
+- Docker 버전: 29.9.2
+
+기본 이미지 실행과 사용자 지정 Nginx 이미지 빌드를 Windows 환경에서 진행했다.
