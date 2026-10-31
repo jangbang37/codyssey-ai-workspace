@@ -275,3 +275,38 @@ https://github.com/jangbang37/codyssey-ai-workspace
 ### 13. 마무리
 
 이번 실습을 통해 터미널 사용법, Linux 권한 관리, Git 및 GitHub 버전 관리, Docker 이미지와 컨테이너, 포트 매핑, Volume 및 Bind Mount의 기본 개념을 익혔습니다.
+---
+
+## 14. 실습 증거 스크린샷
+
+실습 과정과 실행 결과를 확인할 수 있도록 증거 화면을 첨부했습니다.
+
+### 1) Windows 터미널 환경
+![Windows 터미널](evidence/01_windows_terminal.png)
+
+### 2) Linux 권한 및 Docker 확인
+![Linux 권한 및 Docker](evidence/02_linux_permissions_docker.png)
+
+### 3) Docker Volume 데이터 유지
+![Docker Volume](evidence/03_docker_volume_test.png)
+
+### 4) Docker Hello World 실행
+![Hello World](evidence/04_docker_hello_world.png)
+
+### 5) Docker 컨테이너 실행 및 목록
+![Docker 컨테이너](evidence/05_docker_run_ps.png)
+
+### 6) 사용자 정의 이미지 제작
+![사용자 정의 이미지](evidence/06_codyssey_web_custom_image.png)
+
+### 7) Docker 이미지 및 포트 매핑
+![Docker 포트 매핑](evidence/07_codyssey_web_docker_image_port.png)
+
+### 8) Docker 로그 및 리소스 확인
+![Docker logs와 stats](evidence/08_docker_stats_logs_web.png)
+
+### 9) Docker Volume 백업
+![Docker Volume 백업](evidence/09_docker_volume_backup.png)
+
+### 10) Linux 실행 환경
+![Linux 실행 환경](evidence/10_docker_swarm_runtime_linux.png)
