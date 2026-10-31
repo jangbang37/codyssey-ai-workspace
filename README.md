@@ -61,6 +61,10 @@ Killercoda Ubuntu에서 파일과 디렉터리의 권한을 확인하고 변경�
 touch practice.txt
 stat -c "%a %n" practice.txt
 chmod 744 practice.txt
+권한 확인 명령어:
+
+```bash
+ls -l practice.txt
 stat -c "%a %n" practice.txt
 ```
 
@@ -589,4 +593,18 @@ init.defaultbranch=main
 - 사용자 이름 설정 확인
 - 사용자 이메일 설정 확인
 - 기본 브랜치가 `main`으로 설정된 것을 확인
+### 네트워크 네임스페이스(Network Namespace)
+
+네트워크 네임스페이스는 컨테이너마다 네트워크 환경을 분리하여 독립적인 네트워크 인터페이스와 설정을 사용할 수 있도록 하는 기능이다.
+### Linux 파일 권한의 숫자 표기법
+
+Linux 권한은 숫자로도 표현할 수 있다.
+
+- 읽기(r) = 4
+- 쓰기(w) = 2
+- 실행(x) = 1
+
+예를 들어 `744`는 소유자에게 읽기·쓰기·실행 권한(7), 그룹과 기타 사용자에게 읽기 권한(4)을 부여한다.
+
+따라서 `744`는 `rwxr--r--`로 표시된다.
 
